@@ -1,0 +1,73 @@
+# Center Park - Configuración
+# ==========================
+# Este archivo permite personalizar el comportamiento del script
+
+[General]
+# Nombre del archivo de log
+log_file = centerpark_log.txt
+
+# Mostrar colores en la terminal (True/False)
+use_colors = True
+
+# Nivel de detalle del log (0=minimo, 1=normal, 2=detallado)
+log_level = 1
+
+# Timeout para escaneo de red (segundos)
+scan_timeout = 10
+
+# Timeout para captura de paquetes (segundos)
+capture_timeout = 1
+
+# Interfaz WiFi preferida (dejar vacío para auto-detección)
+preferred_interface = 
+
+# Modo monitor: interfaz a crear (dejar vacío para auto-generar)
+monitor_interface = 
+
+[Display]
+# Formato de la hora (strftime format)
+time_format = %H:%M:%S
+
+# Mostrar payload en la salida (True/False)
+show_payload = True
+
+# Longitud máxima del payload a mostrar
+max_payload_length = 100
+
+# Mostrar contador de paquetes (True/False)
+show_packet_count = True
+
+[Filters]
+# Filtrar paquetes por protocolo (dejar vacío para todos)
+# Ejemplo: TCP,UDP,ICMP
+filter_protocols = 
+
+# Excluir IPs de la captura (separadas por coma)
+exclude_ips = 
+
+# Incluir solo estas IPs (separadas por coma, dejar vacío para todas)
+include_ips = 
+
+[Network]
+# Rango de red para escaneo (CIDR notation)
+# Ejemplo: 192.168.1.0/24
+scan_network = 
+
+# Usar arp-scan para detección de dispositivos (True/False)
+use_arp_scan = True
+
+# Usar ping sweep como alternativa (True/False)
+use_ping_sweep = True
+
+# Leer cache ARP del sistema (True/False)
+use_arp_cache = True
+
+[Performance]
+# Número máximo de paquetes por segundo a procesar
+max_packets_per_second = 1000
+
+# Tamaño del buffer de captura
+buffer_size = 1000
+
+# Usar hilos para captura (True/False)
+use_threading = True

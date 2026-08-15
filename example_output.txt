@@ -1,0 +1,70 @@
+Center Park v1.3 - Ejemplo de Salida
+====================================
+
+Este archivo muestra un ejemplo de cómo se vería la salida del script
+centerpark_v1.3.py en una red /24 típica.
+
+--- Inicio de la aplicación ---
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                 CENTERPARK V1.3 - NETWORK AUDITOR               ║
+║                      Developed by KBlake                        ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+[+] Verificando permisos... OK
+[+] Verificando dependencias... OK
+[+] Escaneando red local...
+Escaneando con arp-scan \
+
+DISPOSITIVOS ENCONTRADOS:
+┌────┬─────────────────┬──────────────────┬─────────────────────┐
+│ N° │ IP ADDRESS      │ MAC ADDRESS      │ VENDOR              │
+├────┼─────────────────┼──────────────────┼─────────────────────┤
+│ 1  │ 192.168.1.1     │ 00:11:22:33:44:55│ TP-Link             │
+│ 2  │ 192.168.1.100   │ AA:BB:CC:DD:EE:FF│ Intel Corporation   │
+│ 3  │ 192.168.1.101   │ 11:22:33:44:55:66│ Samsung Electronics │
+│ 4  │ 192.168.1.102   │ AA:BB:CC:DD:EE:01│ Apple Inc.          │
+└────┴─────────────────┴──────────────────┴─────────────────────┘
+
+Seleccione dispositivo (1-4, o '0' para salir): 2
+[+] Seleccionado: 192.168.1.100 (Intel Corporation)
+[+] Router detectado: 192.168.1.1
+
+Seleccione opción [1-7]: 2
+
+[+] Obteniendo MAC reales...
+[+] MAC router: 00:11:22:33:44:55
+[+] MAC target: AA:BB:CC:DD:EE:FF
+
+[+] Iniciando modo monitor en 192.168.1.100
+[!] Presione Ctrl+C para detener
+
+[14:30:25] ORIGEN: 192.168.1.100 -> DESTINO: 8.8.8.8 | PROTO: 6 | TAMAÑO: 74 bytes
+[14:30:25] ORIGEN: 8.8.8.8 -> DESTINO: 192.168.1.100 | PROTO: 6 | TAMAÑO: 60 bytes
+[14:30:26] ORIGEN: 192.168.1.100 -> DESTINO: 192.168.1.1 | PROTO: 17 | TAMAÑO: 66 bytes
+[14:30:27] ORIGEN: 192.168.1.100 -> DESTINO: 142.250.190.46 | PROTO: 6 | TAMAÑO: 120 bytes
+[14:30:28] ORIGEN: 142.250.190.46 -> DESTINO: 192.168.1.100 | PROTO: 6 | TAMAÑO: 150 bytes
+
+^C
+[!] Interrupción recibida. Restaurando red...
+[+] Limpiando...
+[+] Restaurando red...
+[+] Red restaurada exitosamente
+
+============================================================
+  Sesión finalizada. Gracias por usar Center Park v1.3.
+============================================================
+
+--- Notas ---
+
+1. La red se detecta dinámicamente mediante Scapy (get_network_range),
+   no se asume 192.168.1.0/24.
+
+2. Las MAC reales del router y del objetivo se obtienen ANTES del ataque
+   con un ARP request directo (_get_real_mac) y se usan para restaurar
+   las tablas ARP al salir.
+
+3. Durante escaneos y auditorías se muestra un spinner animado
+   (|/-\\).
+
+4. Los reportes se guardan en ~/centerpark_reports/.

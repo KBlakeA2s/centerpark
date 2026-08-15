@@ -1,0 +1,6 @@
+# Center Park v1.3 - Dependencias de Python
+# ========================================
+# Instalar con: pip3 install -r requirements.txt
+
+scapy>=2.4.0
+python-nmap>=0.6.1

@@ -1,0 +1,107 @@
+EUROPEAN UNION PUBLIC LICENCE v1.2
+
+Copyright (c) 2026 Kblake
+
+This program is distributed under the terms of the European Union Public Licence (EUPL) v1.2.
+
+This programme (the "Programme") is offered under the terms of this European Union Public Licence (the "EUPL" or the "Licence").
+
+Any use of the Programme, other than as authorised under this Licence, is prohibited.
+
+By exercising any rights granted to you under this Licence, you accept and agree to be bound by its terms and conditions.
+
+1. DEFINITIONS
+
+"Controller" means the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data.
+
+"Personal Data" means any information relating to an identified or identifiable natural person.
+
+"Processing" means any operation or set of operations which is performed on Personal Data or on sets of Personal Data.
+
+"Programme" means the work of authorship (software) distributed under this Licence, including its source code, object code, and associated documentation.
+
+"Licensee" means any natural or legal person who uses the Programme under the terms of this Licence.
+
+"Licensor" means the natural or legal person that distributes the Programme under this Licence.
+
+"Derivative Work" means any work based upon the Programme, including any modification, adaptation, translation, or compilation of the Programme.
+
+"Distribute" means any act of making the Programme or a Derivative Work available to third parties.
+
+2. SCOPE OF RIGHTS GRANTED
+
+The Licensor hereby grants to the Licensee a non-exclusive, worldwide, royalty-free, perpetual, and irrevocable licence to:
+
+(a) use the Programme for any purpose;
+(b) reproduce the Programme;
+(c) modify the Programme and create Derivative Works;
+(d) communicate to the public, display, perform, and Distribute the Programme (or any part thereof);
+(e) sublicense the Programme (or any part thereof) to third parties;
+(f) exercise any industrial property rights, including patents, trademarks, and designs, that may exist on the Programme, to the extent necessary to permit the use of the Programme in accordance with this Licence.
+
+3. CONDITIONS AND OBLIGATIONS
+
+The rights granted above are subject to the following conditions:
+
+(a) If the Licensee Distributes or communicates to the public the Programme (or any Derivative Work based on it), the Licensee shall:
+
+   (i) keep intact all copyright notices and other notices of authorship;
+   (ii) clearly identify the Licensor (Kblake) as the original author;
+   (iii) include a copy of this Licence or a reference to it;
+   (iv) clearly state that the Programme is available under the terms of this Licence.
+
+(b) If the Licensee modifies the Programme, the Licensee shall:
+
+   (i) clearly indicate in the source code or documentation that modifications have been made;
+   (ii) provide the date of such modifications.
+
+(c) Any Distribution of the Programme (or a Derivative Work) shall be made under the terms of this Licence. The Licensee may not impose any further restrictions on the exercise of the rights granted to recipients under this Licence.
+
+(d) The Licensee may not use the name "Kblake" or any other trademark or trade name of the Licensor to endorse or promote products derived from the Programme without the Licensor's prior written permission.
+
+4. WARRANTY AND LIABILITY DISCLAIMER
+
+THE PROGRAMME IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+IN NO EVENT SHALL THE LICENSOR, THE AUTHORS, OR THE COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE PROGRAMME OR THE USE OR OTHER DEALINGS IN THE PROGRAMME.
+
+5. GOVERNING LAW AND JURISDICTION
+
+This Licence shall be governed by the law of the Member State of the European Union where the Licensor has his habitual residence, or, failing that, by the law of the Member State where the Licensor has his principal place of business.
+
+Any dispute arising out of or in connection with this Licence shall be submitted to the jurisdiction of the courts of the Member State where the Licensor has his habitual residence or, failing that, where the Licensor has his principal place of business.
+
+6. TERMINATION
+
+Without prejudice to any other rights, the Licensor may terminate this Licence if the Licensee fails to comply with any of its terms and conditions. In such event, the Licensee shall cease all use, reproduction, Distribution, and modification of the Programme.
+
+7. MISCELLANEOUS
+
+This Licence constitutes the entire agreement between the parties with respect to the Programme. If any provision of this Licence is held to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+For the full official legal text, please visit: https://eupl.eu/1.2/
+
+---
+
+SUMMARY FOR USERS (NON-BINDING):
+
+✅ You may use, copy, modify, and distribute this code freely.
+❌ You may NOT close the source code of derivative works (they must remain open source).
+❌ You may NOT charge for the use of this software (it must remain free).
+❌ You may NOT remove or modify the credits to "Kblake".
+❌ You may NOT use the name "Kblake" to promote your products without permission.
+
+---
+
+DISCLAIMER
+
+The Licensor (Kblake) is not responsible for any damages, losses, or legal consequences arising from the use or misuse of this Programme. Users assume full responsibility for their actions when using this software.
+
+This tool is designed for network analysis and security auditing purposes. Users must comply with all applicable laws and regulations in their jurisdiction. Unauthorized access to computer systems, networks, or data is illegal and may result in criminal prosecution.
+
+By using this Programme, you agree to:
+- Use it only on networks and systems you own or have explicit written permission to test
+- Comply with all applicable local, national, and international laws
+- Take full responsibility for any consequences resulting from the use of this software
+
+The Licensor makes no warranties, express or implied, about the fitness for a particular purpose, reliability, or security of this Programme.
