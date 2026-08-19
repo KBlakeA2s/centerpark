@@ -209,11 +209,11 @@ class CenterPark:
 
 
     def print_banner(self):
-        """Mostrar banner de CenterPark"""
+        """Mostrar banner de CenterPark (launcher de módulos)"""
         os.system('clear')
         banner = f"""
 {COLORS['cyan']}╔══════════════════════════════════════════════════════════════════╗
-║                 CENTERPARK V1.3 - NETWORK AUDITOR               ║
+║               CENTERPARK V1.3 - LAUNCHER DE MÓDULOS            ║
 ║                      Developed by KBlake                        ║
 ╚══════════════════════════════════════════════════════════════════╝{COLORS['reset']}
         """
@@ -747,6 +747,85 @@ class CenterPark:
             
         print(f"{COLORS['green']}[+] Reporte TXT guardado en: {txt_file}{COLORS['reset']}")
         
+    def run_rob_info(self):
+        """Llamar al módulo externo rob_info.py ubicado en el mismo directorio.
+
+        Se ejecuta como un proceso independiente (subprocess) para no alterar
+        la lógica principal de CenterPark. Requiere permisos de sudo (ya los
+        tiene el proceso padre).
+        """
+        ruta_modulo = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), 'rob_info.py')
+        if not os.path.exists(ruta_modulo):
+            print(f"{COLORS['red']}[!] No se encontró rob_info.py en: "
+                  f"{ruta_modulo}{COLORS['reset']}")
+            return
+        print(f"{COLORS['cyan']}[+] Ejecutando módulo rob_info...{COLORS['reset']}")
+        try:
+            subprocess.call([sys.executable, ruta_modulo])
+        except Exception as e:
+            print(f"{COLORS['red']}[!] Error al ejecutar rob_info: "
+                  f"{e}{COLORS['reset']}")
+
+    def modulo_launcher(self):
+        """Mostrar el menú de módulos del launcher de CenterPark.
+
+        NUEVO COMPORTAMIENTO: al iniciar el script NO se escanea la red.
+        Aquí se elige qué módulo ejecutar.
+        """
+        while True:
+            print(f"\n{COLORS['cyan']}╔══════════════════════════════════════════════════════════════════╗")
+            print(f"║                  MÓDULOS DISPONIBLES                               ║")
+            print(f"╠══════════════════════════════════════════════════════════════════╣")
+            print(f"║  [1] Auditoría de Red (CentroPark original)                      ║")
+            print(f"║  [2] Robar información del sistema (rob_info)                    ║")
+            print(f"║  [0] Salir                                                      ║")
+            print(f"╚══════════════════════════════════════════════════════════════════╝{COLORS['reset']}")
+
+            try:
+                choice = input(f"\n{COLORS['cyan']}Seleccione un módulo [0-2]: {COLORS['reset']}").strip()
+
+                if choice == '1':
+                    self.modulo_auditoria_red()
+                elif choice == '2':
+                    self.run_rob_info()
+                elif choice in ('0', 'exit', 'salir'):
+                    print(f"{COLORS['yellow']}[!] Saliendo de CenterPark...{COLORS['reset']}")
+                    self.cleanup()
+                    sys.exit(0)
+                else:
+                    print(f"{COLORS['red']}[!] Opción inválida{COLORS['reset']}")
+
+            except KeyboardInterrupt:
+                print(f"{COLORS['yellow']}[!] Saliendo de CenterPark...{COLORS['reset']}")
+                self.cleanup()
+                sys.exit(0)
+
+    def modulo_auditoria_red(self):
+        """Módulo 1: Auditoría de Red (toda la funcionalidad original de CenterPark).
+
+        Contiene el flujo original: escaneo de red, selección de objetivo,
+        obtención del router y el menú principal de auditoría.
+
+        Al salir de este módulo (opción 7 del menú original) se vuelve al
+        menú de módulos del launcher, NO se sale del script.
+        """
+        print(f"\n{COLORS['magenta']}══════════════════════════════════════════════════════════════════")
+        print(f"  📡 MÓDULO 1: AUDITORÍA DE RED")
+        print(f"══════════════════════════════════════════════════════════════════{COLORS['reset']}")
+
+        # Flujo original: escanear y seleccionar dispositivo objetivo
+        if self.select_device():
+            # Obtener IP del router
+            self.router_ip = self._get_router_ip()
+            print(f"{COLORS['green']}[+] Router detectado: {self.router_ip}{COLORS['reset']}")
+
+            # Mostrar el menú principal de auditoría de red
+            self.main_menu()
+
+        print(f"{COLORS['yellow']}[!] Saliendo del módulo de Auditoría de Red...{COLORS['reset']}")
+        input(f"{COLORS['cyan']}[+] Presione Enter para volver al menú de módulos...{COLORS['reset']}")
+
     def main_menu(self):
         """Mostrar menú principal"""
         while True:
@@ -760,7 +839,7 @@ class CenterPark:
             print(f"║  [4] Auditoría de Vulnerabilidades (nmap vuln)                ║")
             print(f"║  [5] Exportar resultados a archivo (JSON/TXT)                 ║")
             print(f"║  [6] Cambiar dispositivo objetivo                             ║")
-            print(f"║  [7] Salir y restaurar red                                   ║")
+            print(f"║  [7] Salir y volver al menú de módulos                       ║")
             print(f"╚══════════════════════════════════════════════════════════════════╝{COLORS['reset']}")
             
             try:
@@ -786,14 +865,16 @@ class CenterPark:
                     else:
                         break
                 elif choice == '7':
+                    # Salir del módulo y volver al menú de módulos del launcher
                     self.cleanup()
-                    sys.exit(0)
+                    return
                 else:
                     print(f"{COLORS['red']}[!] Opción inválida{COLORS['reset']}")
                     
             except KeyboardInterrupt:
+                # Al interrumpir, volver al launcher (limpiando la red)
                 self.cleanup()
-                sys.exit(0)
+                return
                 
     def _get_router_ip(self):
         """
@@ -843,7 +924,7 @@ class CenterPark:
         sys.exit(0)
         
     def run(self):
-        """Ejecutar aplicación principal"""
+        """Ejecutar aplicación principal (launcher de módulos)"""
         # Registrar manejador de señales
         signal.signal(signal.SIGINT, self.signal_handler)
         signal.signal(signal.SIGTERM, self.signal_handler)
@@ -858,18 +939,8 @@ class CenterPark:
         # Iniciar sesión
         self.session_start = datetime.now()
         
-        # Seleccionar dispositivo
-        if self.select_device():
-            # Obtener IP del router
-            self.router_ip = self._get_router_ip()
-            print(f"{COLORS['green']}[+] Router detectado: {self.router_ip}{COLORS['reset']}")
-            
-            # Mostrar menú principal
-            self.main_menu()
-        else:
-            print(f"{COLORS['yellow']}[!] Saliendo...{COLORS['reset']}")
-            self.cleanup()
-            sys.exit(0)
+        # NUEVO COMPORTAMIENTO: mostrar menú de módulos (sin escanear la red)
+        self.modulo_launcher()
 
 
 def main():
