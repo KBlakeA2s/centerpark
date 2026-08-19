@@ -7,7 +7,7 @@
 
 ## Descripción
 
-**CenterPark v1.3** es una aplicación completa de **análisis y auditoría de redes WiFi/LAN** escrita en Python. Permite escanear dispositivos, capturar tráfico mediante ARP spoofing, interrumpir la conectividad de un objetivo (modo DoS), ejecutar escaneos agresivos y auditorías de vulnerabilidades con nmap, y exportar todos los resultados.
+**CenterPark** es una aplicación completa de **análisis y auditoría de redes WiFi/LAN** escrita en Python. Permite escanear dispositivos, capturar tráfico mediante ARP spoofing, interrumpir la conectividad de un objetivo (modo DoS), ejecutar escaneos agresivos y auditorías de vulnerabilidades con nmap, y exportar todos los resultados.
 
 Este proyecto está pensado exclusivamente para **auditores de seguridad**, administradores de red y estudiantes que necesiten analizar sus propias redes o redes sobre las que tengan **autorización explícita por escrito**.
 
