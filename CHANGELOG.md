@@ -1,5 +1,34 @@
 # Center Park - Registro de Cambios
 
+## [1.3.2] - 2026-08-18
+
+### Mejorado
+
+- **Informe completo y visual de `rob_info.py`** (módulo 2 del launcher):
+  - **Resumen ejecutivo** al inicio con estado general del sistema y conteo de alertas.
+  - **Detalle por archivo**: primer/último evento, conteos por categoría con su último evento, IPs y usuarios más frecuentes.
+  - **Análisis y tendencias**: alertas contextuales (fuerza bruta, escaneo de puertos, comandos sudo sospechosos), estado del sistema y actividad por hora con gráfico ASCII.
+  - **Formato visual**: tabla de categorías con bordes, barras de progreso por categoría, top de IPs/usuarios con contexto, últimos N eventos de cada categoría, primeros eventos del día y eventos más frecuentes.
+  - **Estadísticas avanzadas**: salud del sistema (CPU, RAM, disco, servicios críticos, uptime).
+  - **JSON mejorado**: secciones `metadata` (hostname, kernel, uptime, OS, usuarios activos), `alertas`, `analisis` (estado general, conteos y recomendaciones) y `detalles` por fase (eventos recientes/frecuentes, IPs y usuarios analizados).
+
+## [1.3.1] - 2026-08-18
+
+### Añadido
+
+- **Launcher de módulos**: CenterPark ahora inicia como un launcher que muestra un menú de módulos **sin escanear la red automáticamente**.
+  - Módulo **`[1] Auditoría de Red`**: contiene toda la funcionalidad original (escaneo de red, selección de objetivo, escaneo agresivo, modo monitor/ARP spoofing, DoS, auditoría de vulnerabilidades y exportación). Al salir (opción 7 del menú original) **vuelve al menú de módulos**, no cierra el script.
+  - Módulo **`[2] Robar información del sistema`**: ejecuta el módulo externo `rob_info.py`, que analiza los logs del sistema (aplicaciones y sistema) en paralelo por fases y permite guardar un informe JSON.
+  - Opción **`[0]`** para salir de CenterPark.
+- Nuevos métodos `modulo_launcher()` y `modulo_auditoria_red()`.
+- Añadido módulo externo `rob_info.py` (recolector/análisis de logs del sistema).
+
+### Cambiado
+
+- `run()` ya **no escanea la red** al inicio: tras verificar permisos y dependencias muestra el menú de módulos.
+- `main_menu()`: la opción 7 ahora devuelve al launcher en lugar de `sys.exit`; se eliminó la opción 8 (rob_info) redundante, ya que es el módulo `[2]` del launcher.
+- Banner actualizado a "LAUNCHER DE MÓDULOS".
+
 ## [1.3.0] - 2026-08-14
 
 ### Corregido
@@ -114,3 +143,4 @@
 - Mejora en el manejo de errores de red
 - Optimización de rendimiento en captura de paquetes
 - Sistema de plugins extensible
+
